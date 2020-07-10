@@ -17,11 +17,15 @@ public class SpotifyApplication implements CommandLineRunner {
 
     private static final Logger log = LoggerFactory.getLogger(SpotifyApplication.class);
 
+    public SpotifyApplication(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
+
     public static void main(String[] args) {
         SpringApplication.run(SpotifyApplication.class, args);
     }
 
-    @Autowired
+    final
     JdbcTemplate jdbcTemplate;
 
     @Override
