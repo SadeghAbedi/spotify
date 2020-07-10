@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'com.example'
-version = '1.0'
+version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '14'
 
 repositories {
@@ -13,7 +13,8 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+    runtimeOnly 'mysql:mysql-connector-java'
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
