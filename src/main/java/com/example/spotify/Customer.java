@@ -4,18 +4,8 @@ public class Customer {
     private long id;
     private String firstName, lastName;
 
-    public Customer(long id, String firstName, String lastName) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
-
     public long getId() {
         return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getFirstName() {
@@ -34,5 +24,18 @@ public class Customer {
         this.lastName = lastName;
     }
 
-    public Customer(){}
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public Customer(long id, String firstName, String lastName) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    public Customer() {
+
+    }
 }
+
