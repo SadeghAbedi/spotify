@@ -1,14 +1,17 @@
 package com.example.spotify.entities;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Album {
 
     private long id;
     private String title;
-    private String gener;
+    private String genre;
     private String artist;
     private Date publishDate;
+    private List<Song> songs;
 
     public long getId() {
         return id;
@@ -24,14 +27,6 @@ public class Album {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getGener() {
-        return gener;
-    }
-
-    public void setGener(String gener) {
-        this.gener = gener;
     }
 
     public String getArtist() {
@@ -50,14 +45,31 @@ public class Album {
         this.publishDate = publishDate;
     }
 
-    public Album(long id, String title, String gener, String artist, Date publishDate) {
+    public Album(long id, String title, String gener, String artist, Date publishDate, List<Song> songs) {
         this.id = id;
         this.title = title;
-        this.gener = gener;
         this.artist = artist;
         this.publishDate = publishDate;
+        this.songs = songs;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public List<Song> getSongs() {
+        return songs;
+    }
+
+    public void setSongs(List<Song> songs) {
+        this.songs = songs;
     }
 
     public Album() {
+
     }
 }
