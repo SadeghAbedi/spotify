@@ -18,6 +18,11 @@ return album;
         //Just use id of album
     }
 
+    @DeleteMapping("/removeSongs")
+    public void removeSongs(@RequestParam String token,@RequestBody Album album){
+        //just delete songs in the songsList in album
+    }
+
 
 
 }
