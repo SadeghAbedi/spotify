@@ -3,10 +3,7 @@ package com.example.spotify.controllers;
 
 import com.example.spotify.Customer;
 import com.example.spotify.entities.Album;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class AlbumController {
@@ -15,4 +12,12 @@ public class AlbumController {
 //returnesho pak kon! mese demoController :D
 return album;
     }
+
+    @DeleteMapping("/removeAlbum")
+    public void removeAlbum(@RequestParam String token,@RequestBody Album album){
+        //Just use id of album
+    }
+
+
+
 }
