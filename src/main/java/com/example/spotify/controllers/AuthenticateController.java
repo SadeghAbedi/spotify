@@ -25,6 +25,11 @@ public class AuthenticateController {
 
     }
 
+    @PatchMapping("/acceptArtist")
+    public void acceptArtist(@RequestParam String token, @RequestBody Artist artist){
+
+    }
+
     @PostMapping("/listenerRegister")
     public void listenerReg(@RequestParam String token, @RequestBody Listener listener){
 
