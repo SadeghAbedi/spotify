@@ -8,6 +8,9 @@ public class Artist {
     private String nationality;
     private boolean isVerified;
     private Date startDate;
+    private String password;
+    private String email;
+    private long questionId;
 
     public String getUserName() {
         return userName;
@@ -49,12 +52,39 @@ public class Artist {
         this.startDate = startDate;
     }
 
-    public Artist(String userName, String artisticName, String nationality, boolean isVerified, Date startDate) {
+    public void setQuestionId(long questionId) {
+        this.questionId = questionId;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public long getQuestionId() {
+        return questionId;
+    }
+
+    public Artist(String userName, String artisticName, String nationality, boolean isVerified, Date startDate, String password, String email, long questionId) {
         this.userName = userName;
         this.artisticName = artisticName;
         this.nationality = nationality;
         this.isVerified = isVerified;
         this.startDate = startDate;
+        this.password = password;
+        this.email = email;
+        this.questionId = questionId;
     }
 
     public Artist() {

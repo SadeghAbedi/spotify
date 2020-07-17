@@ -2,7 +2,7 @@ package com.example.spotify.entities;
 
 import java.util.Date;
 
-public class permium {
+public class Premium {
 
     private long id;
     private long timeDuration;
@@ -60,7 +60,7 @@ public class permium {
         this.listener = listener;
     }
 
-    public permium(long id, long timeDuration, Date buyDate, long creditNum, Date expirationDate, String listener) {
+    public Premium(long id, long timeDuration, Date buyDate, long creditNum, Date expirationDate, String listener) {
         this.id = id;
         this.timeDuration = timeDuration;
         this.buyDate = buyDate;
@@ -69,6 +69,6 @@ public class permium {
         this.listener = listener;
     }
 
-    public permium() {
+    public Premium() {
     }
 }
