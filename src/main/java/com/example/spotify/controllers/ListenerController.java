@@ -21,17 +21,12 @@ public class ListenerController {
 
     @PostMapping("/follow")
     public void follow(@RequestBody Listener listener){
-        String sql = "INSERT INTO listener (userName,firstName,lastName,nationality,birthYear) VALUES (?,?,?,?,?)";
 
-        Map<String, Object> parameters = new HashMap<String, Object>();
-        jdbcTemplate.update(sql, listener.getUserName(),listener.getFirstName(),listener.getLastName(),listener.getNationality(),listener.getBirthYear());
     }
 
     @DeleteMapping("/unFollow")
     // delete listener
     public void unFollow(@RequestParam String userName){
-        String sql = "DELETE FROM listener WHERE userName=?";
-        jdbcTemplate.update(sql, userName);
-        
+
     }
 }

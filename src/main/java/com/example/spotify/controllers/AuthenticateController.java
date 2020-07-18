@@ -6,6 +6,9 @@ import com.example.spotify.entities.Listener;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 public class AuthenticateController {
 
@@ -16,32 +19,48 @@ public class AuthenticateController {
     }
 
     @PostMapping("/adminRegister")
-    public void adminReg(@RequestParam String token, @RequestBody Admin admin){
+    public void adminReg(@RequestBody Admin admin){
+        String sql = "INSERT INTO admin (userName) VALUES (?)";
+
+        Map<String, Object> parameters = new HashMap<String, Object>();
+        jdbcTemplate.update(sql, admin.getUserName());
 
     }
 
     @PostMapping("/artistRegister")
-    public void artistReg(@RequestParam String token, @RequestBody Artist artist){
+    public void artistReg(@RequestBody Artist artist){
+        String sql = "INSERT INTO artist (userName,artisticName,nationality,isVerified,startDate) VALUES (?,?,?,?,?)";
+
+        Map<String, Object> parameters = new HashMap<String, Object>();
+        jdbcTemplate.update(sql,artist.getUserName(),artist.getArtisticName(),artist.getNationality(),artist.isVerified(),artist.getStartDate());
 
     }
 
     @PostMapping("/listenerRegister")
-    public void listenerReg(@RequestParam String token, @RequestBody Listener listener){
+    public void listenerReg(@RequestBody Listener listener){
+        String sql = "INSERT INTO listener (userName,firstName,lastName,nationality,birthYear) VALUES (?,?,?,?,?)";
+
+        Map<String, Object> parameters = new HashMap<String, Object>();
+        jdbcTemplate.update(sql, listener.getUserName(),listener.getFirstName(),listener.getLastName(),listener.getNationality(),listener.getBirthYear());
 
     }
 
     @DeleteMapping("/deleteAdmin")
-    public void adminDel(@RequestParam String token, @RequestBody Admin admin){
-
+    public void adminDel(@RequestParam String userName){
+        String sql = "DELETE FROM admin WHERE userName=?";
+        jdbcTemplate.update(sql, userName);
     }
 
     @DeleteMapping("/deleteArtist")
-    public void artistDel(@RequestParam String token, @RequestBody Artist artist){
-
+    public void artistDel(@RequestParam String userName){
+        String sql = "DELETE FROM artist WHERE userName=?";
+        jdbcTemplate.update(sql, userName);
     }
 
     @DeleteMapping("/deleteListener")
-    public void listenerDel(@RequestParam String token, @RequestBody Listener listener){
+    public void listenerDel(@RequestParam String userName){
+        String sql = "DELETE FROM listener WHERE userName=?";
+        jdbcTemplate.update(sql, userName);
 
     }
 }
