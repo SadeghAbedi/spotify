@@ -21,8 +21,7 @@ public class DemoController {
     }
 
     @GetMapping("/rest")
-    public List<Customer> greet(@RequestParam(required = false,
-            defaultValue = "Josh") String name) {
+    public List<Customer> greet(@RequestParam(required = false, defaultValue = "Josh") String name) {
         return jdbcTemplate.query(
                 "SELECT id, first_name, last_name FROM customers WHERE first_name = ?", new Object[]{
 

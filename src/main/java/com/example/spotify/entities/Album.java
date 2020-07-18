@@ -45,7 +45,7 @@ public class Album {
         this.publishDate = publishDate;
     }
 
-    public Album(long id, String title, String gener, String artist, Date publishDate, List<Song> songs) {
+    public Album(long id, String title, String genre, String artist, Date publishDate,List<Song> songs) {
         this.id = id;
         this.title = title;
         this.artist = artist;

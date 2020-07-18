@@ -3,25 +3,26 @@ package com.example.spotify.entities;
 public class PlayLSong {
 
     private long songId;
-    private long playLostId;
+    private long playlistId;
 
-    public long getPlayLostId() {
-        return playLostId;
+    public long getPlaylistId() {
+        return playlistId;
     }
 
     public long getSongId() {
         return songId;
     }
 
-    public void setPlayLostId(long playLostId) {
-        this.playLostId = playLostId;
+    public void setPlaylistId(long playlistId) {
+        this.playlistId = playlistId;
     }
 
     public void setSongId(long songId) {
         this.songId = songId;
     }
-    public PlayLSong(long playLostId,long songId){
-        this.setPlayLostId(playLostId);
+
+    public PlayLSong(long playlistId,long songId){
+        this.setPlaylistId(playlistId);
         this.setSongId(songId);
     }
 }

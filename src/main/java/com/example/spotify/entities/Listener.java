@@ -76,7 +76,7 @@ public class Listener {
         this.questionId = questionId;
     }
 
-    public Listener(String userName, String firstName, String lastName, String nationality, Date birthYear, String password, String email, long questionId) {
+    public Listener(String userName, String firstName, String lastName, String nationality, Date birthYear, String password, String email,long questionId) {
         this.userName = userName;
         this.firstName = firstName;
         this.lastName = lastName;

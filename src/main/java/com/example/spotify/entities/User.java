@@ -7,8 +7,7 @@ public class User {
     private long questionId;
 
 
-    public String getUserName() {
-        return userName;
+    public String getUserName() { return userName;
     }
 
     public void setUserName(String userName) {

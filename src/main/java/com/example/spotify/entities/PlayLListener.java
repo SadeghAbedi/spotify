@@ -3,9 +3,9 @@ package com.example.spotify.entities;
 public class PlayLListener {
 
     private long playlistId;
-    private long listenerId;
+    private String listenerId;
 
-    public long getListenerId() {
+    public String getListenerId() {
         return listenerId;
     }
 
@@ -13,14 +13,14 @@ public class PlayLListener {
         return playlistId;
     }
 
-    public void setListenerId(long listenerId) {
+    public void setListenerId(String listenerId) {
         this.listenerId = listenerId;
     }
 
     public void setPlaylistId(long playlistId) {
         this.playlistId = playlistId;
     }
-    public PlayLListener(long playlistId,long listenerId){
+    public PlayLListener(long playlistId,String listenerId){
         this.listenerId = listenerId;
         this.playlistId = playlistId;
     }
