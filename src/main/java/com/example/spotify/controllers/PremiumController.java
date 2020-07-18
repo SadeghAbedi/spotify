@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 public class PremiumController {
 
@@ -17,7 +20,10 @@ public class PremiumController {
     }
 
     @PostMapping("/buyPremium")
-    public void buyPre(@RequestParam String token, @RequestBody Premium premium){
+    public void buyPre( @RequestBody Premium premium){
+        String sql = "INSERT INTO premium (timeDuration,buyDate,creditNum,expirationDate,listener) VALUES (?,?,?,?,?)";
+
+        jdbcTemplate.update(sql, premium.getTimeDuration(),premium.getBuyDate(),premium.getCreditNum(),premium.getExpirationDate(),premium.getListener());
 
     }
 }

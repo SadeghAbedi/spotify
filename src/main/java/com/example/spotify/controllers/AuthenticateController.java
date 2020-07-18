@@ -22,7 +22,6 @@ public class AuthenticateController {
     public void adminReg(@RequestBody Admin admin){
         String sql = "INSERT INTO admin (userName) VALUES (?)";
 
-        Map<String, Object> parameters = new HashMap<String, Object>();
         jdbcTemplate.update(sql, admin.getUserName());
 
     }
@@ -31,7 +30,6 @@ public class AuthenticateController {
     public void artistReg(@RequestBody Artist artist){
         String sql = "INSERT INTO artist (userName,artisticName,nationality,isVerified,startDate) VALUES (?,?,?,?,?)";
 
-        Map<String, Object> parameters = new HashMap<String, Object>();
         jdbcTemplate.update(sql,artist.getUserName(),artist.getArtisticName(),artist.getNationality(),artist.isVerified(),artist.getStartDate());
 
     }
@@ -40,7 +38,6 @@ public class AuthenticateController {
     public void listenerReg(@RequestBody Listener listener){
         String sql = "INSERT INTO listener (userName,firstName,lastName,nationality,birthYear) VALUES (?,?,?,?,?)";
 
-        Map<String, Object> parameters = new HashMap<String, Object>();
         jdbcTemplate.update(sql, listener.getUserName(),listener.getFirstName(),listener.getLastName(),listener.getNationality(),listener.getBirthYear());
 
     }

@@ -29,7 +29,6 @@ public class PlayListController {
     public void addPlayList( @RequestBody Playlist playlist){
         String sql = "INSERT INTO playlist (title, creator) VALUES (?,?)";
 
-        Map<String, Object> parameters = new HashMap<String, Object>();
         jdbcTemplate.update(sql,playlist.getTitle(),playlist.getCreator());
 
     }
@@ -53,12 +52,9 @@ public class PlayListController {
     @PostMapping("/addSong")
     public void addSong( @RequestBody PlayLSong playLSong){
         //add song and date
-//        String sql = "INSERT INTO playLSong (songId,playlistId) VALUES (?songId,?playlistId)";
+//        String sql = "INSERT INTO playLSong (songId,playlistId) VALUES (?,?)";
 //
-//        Map<String, Object> parameters = new HashMap<String, Object>();
-//        parameters.put("songId",playLSong.getSongId());
-//        parameters.put("playlistId",playLSong.getPlaylistId());
-//        jdbcTemplate.update(sql, parameters);
+//        jdbcTemplate.update(sql,);
 
 
     }
