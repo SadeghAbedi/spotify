@@ -34,6 +34,11 @@ public class AuthenticateController {
 
     }
 
+    @PatchMapping("/acceptArtist")
+    public void acceptArtist(@RequestParam String token, @RequestBody Artist artist){
+
+    }
+
     @PostMapping("/listenerRegister")
     public void listenerReg(@RequestBody Listener listener){
         String sql = "INSERT INTO listener (userName,firstName,lastName,nationality,birthYear) VALUES (?,?,?,?,?)";
