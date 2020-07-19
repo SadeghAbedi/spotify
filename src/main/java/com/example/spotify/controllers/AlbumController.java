@@ -2,12 +2,14 @@ package com.example.spotify.controllers;
 
 
 import com.example.spotify.entities.Album;
+import com.example.spotify.entities.Listener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ParameterizedPreparedStatementSetter;
 import org.springframework.web.bind.annotation.*;
 
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,19 +23,22 @@ public class AlbumController {
     }
 
     @PostMapping("/addAlbum")
-    public void addAlbum(@RequestBody Album album) {
-//        String sql = "INSERT INTO album (title,genre,artist,publishDate) VALUES (?,?,?,?)";
-//
-//        Map<String, Object> parameters = new HashMap<String, Object>();
-//        jdbcTemplate.update(sql, album.getTitle(),album.getGenre(),album.getArtist(),album.getPublishDate());
-//
+    public void addAlbum(@RequestParam String token, @RequestBody Album album) {
+        var userName = jdbcTemplate.query("SELECT userName FROM token WHERE token =?",
+                new Object[]{token},((rs,rows) -> rs.getString("userName")));
+
+        String sql = "INSERT INTO album (title,genre,artist,publishDate,songs) VALUES (?,?,?,?,?)";
+
+        jdbcTemplate.update(sql, album.getTitle(),album.getGenre(),userName, new Date(System.currentTimeMillis()),album.getSongs());
+
     }
 
     @DeleteMapping("/removeAlbum")
-    public void removeAlbum(@RequestParam Long id){
+    public void removeAlbum(@RequestBody Album album){
         //Just use id of album
         String sql = "DELETE FROM album WHERE id=?";
-        jdbcTemplate.update(sql, id);
+        jdbcTemplate.update(sql,album.getId());
+
     }
 
     @DeleteMapping("/removeSongs")

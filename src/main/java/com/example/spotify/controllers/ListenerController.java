@@ -20,13 +20,22 @@ public class ListenerController {
     }
 
     @PostMapping("/follow")
-    public void follow(@RequestBody Listener listener){
+    public void follow(@RequestParam String token, @RequestBody Listener listener){
+        var userName = jdbcTemplate.query("SELECT userName FROM token WHERE token =?",
+                new Object[]{token},((rs,rows) -> rs.getString("userName")));
 
+        String sql = "INSERT INTO follow (userName1,userName2) VALUES (?,?)";
+        jdbcTemplate.update(sql,userName,listener.getUserName());
     }
 
     @DeleteMapping("/unFollow")
     // delete listener
-    public void unFollow(@RequestParam String userName){
+    public void unFollow(@RequestParam String token, @RequestBody Listener listener){
+        var userName = jdbcTemplate.query("SELECT userName FROM token WHERE token =?",
+                new Object[]{token},((rs,rows) -> rs.getString("userName")));
+
+        String sql = "DELETE FROM follow WHERE userName1=? and userName2=?";
+        jdbcTemplate.update(sql,userName,listener.getUserName());
 
     }
 }
