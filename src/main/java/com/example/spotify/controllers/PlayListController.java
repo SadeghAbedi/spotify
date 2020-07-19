@@ -65,7 +65,7 @@ public class PlayListController {
         var userName = jdbcTemplate.query("SELECT userName FROM token WHERE token =?",
                 new Object[]{token},((rs,rows) -> rs.getString("userName")));
 
-        String sql = "INSERT INTO add_song (userName,songId,playlistId,addDate) VALUES (?,?,?)";
+        String sql = "INSERT INTO add_song (userName,songId,playlistId,addDate) VALUES (?,?,?,?)";
         jdbcTemplate.update(sql,userName, playLSong.getSongId(),playLSong.getPlaylistId(), new Date(System.currentTimeMillis()));
 
     }
@@ -81,11 +81,21 @@ public class PlayListController {
 
     @PostMapping("/likePlayList")
     public void likePlayList(@RequestParam String token, @RequestBody Playlist playlist){
+        var userName = jdbcTemplate.query("SELECT userName FROM token WHERE token =?",
+                new Object[]{token},((rs,rows) -> rs.getString("userName")));
+
+        String sql = "INSERT INTO like_playlist (userName,playlistId) VALUES (?,?)";
+        jdbcTemplate.update(sql,userName, playlist.getId());
 
     }
 
     @DeleteMapping("/unlikePlayList")
     public void unlikePlayList(@RequestParam String token, @RequestBody Playlist playlist){
+        var userName = jdbcTemplate.query("SELECT userName FROM token WHERE token =?",
+                new Object[]{token},((rs,rows) -> rs.getString("userName")));
+
+        String sql = "DELETE  FROM like_playlist WHERE userName=? and playlistId=?";
+        jdbcTemplate.update(sql,userName, playlist.getId());
 
     }
 }
