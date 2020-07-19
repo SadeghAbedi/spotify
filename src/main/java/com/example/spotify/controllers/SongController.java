@@ -21,18 +21,24 @@ public class SongController {
     }
 
     @PostMapping("/likeSong")
-    public void likeSong( @RequestBody Song song){
-        String sql = "INSERT INTO song (albumId,title,duration) VALUES (?,?,?)";
+    public void likeSong(@RequestParam String token, @RequestBody Song song){
 
-        Map<String, Object> parameters = new HashMap<String, Object>();
-        jdbcTemplate.update(sql, song.getAlbumId(),song.getTitle(),song.getDuration());
+        var userName = jdbcTemplate.query("SELECT userName FROM token WHERE token =?",
+                new Object[]{token},((rs,rows) -> rs.getString("userName")));
+
+        String sql = "INSERT INTO like_song (userName,songId) VALUES (?,?)";
+        jdbcTemplate.update(sql, userName,song.getId());
     }
 
 
     @DeleteMapping("/unlikeSong")
-    public void unlikeSong(@RequestParam Long id){
-        String sql = "DELETE FROM song WHERE id=?";
-        jdbcTemplate.update(sql, id);
+    public void unlikeSong(@RequestParam String token, @RequestBody Song song){
+
+        var userName = jdbcTemplate.query("SELECT userName FROM token WHERE token =?",
+                new Object[]{token},((rs,rows) -> rs.getString("userName")));
+
+        String sql = "DELETE FROM like_song WHERE songId=? and userName=?";
+        jdbcTemplate.update(sql,song.getId(),userName);
     }
 
     @GetMapping("/getSong")

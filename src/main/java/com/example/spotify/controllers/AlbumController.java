@@ -2,7 +2,6 @@ package com.example.spotify.controllers;
 
 
 import com.example.spotify.entities.Album;
-import com.example.spotify.service.AlbumService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ParameterizedPreparedStatementSetter;
